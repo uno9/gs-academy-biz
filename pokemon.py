@@ -1,6 +1,9 @@
 # -*- cording:utf-8 -*-
 
 import random
+import subprocess
+import time
+
 from colorama import Fore, Back, Style
 
 # 変数セット
@@ -24,35 +27,40 @@ trInt = random.randint(0,2)
 print(f'{trainer[trInt]}が しょうぶを しかけてきた！')
 print(f'{Fore.CYAN} {trainer[trInt]}『{beforeSerif[trInt]}』{Fore.RESET}')
 
+while True:
 
-print(f' > 0.{hand[0]} \n > 1.{hand[1]} \n > 2.{hand[2]}')
-user = input('あなたは どうする？：')
-
-
-# 入力チェック
-uInt = int(user) if user.isdecimal() else {print(f'{Fore.RED} {trainer[trInt]}『 数字を 入力しよう！』{Fore.RESET}'),exit()}
-if uInt < 3:
-  print(f'あなたは {Fore.CYAN}{hand[uInt]}{Fore.RESET}を 出した')
-else:
-  print(f'{Fore.RED} {trainer[trInt]}『 0 から 2 の 数字を 入力しよう！』{Fore.RESET}')
-  exit()
+  print(f' > 0.{hand[0]} \n > 1.{hand[1]} \n > 2.{hand[2]}')
+  user = input('あなたは どうする？：')
 
 
-print('じゃんけん　ポンッ！')
-cpInt = random.randint(0,2)
+  # 入力チェック
+  uInt = int(user) if user.isdecimal() else {print(f'{Fore.RED} {trainer[trInt]}『 数字を 入力しよう！』{Fore.RESET}'),exit()}
+  if uInt < 3:
+    print(f'あなたは {Fore.CYAN}{hand[uInt]}{Fore.RESET}を 出した')
+  else:
+    print(f'{Fore.RED} {trainer[trInt]}『 0 から 2 の 数字を 入力しよう！』{Fore.RESET}')
+    exit()
 
-# 判定
-if uInt - cpInt == 0:
-  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
-  print(f'{Fore.CYAN}{result[2]}{Fore.RESET}')
-  print(f'{Fore.CYAN} {trainer[trInt]}『{afterSerif[2]}』{Fore.RESET}')  
 
-elif uInt - cpInt == 1 or uInt - cpInt == 2:
-  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
-  print(f'{Fore.GREEN}{result[0]}')
-  print(f'{trainer[trInt]}『{afterSerif[0]}』{Fore.RESET}')
+  print('じゃんけん　ポンッ！')
+  cpInt = random.randint(0,2)
 
-else:
-  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
-  print(f'{Style.DIM} {Fore.RED}{result[1]}')
-  print(f'『{afterSerif[1]}』{Style.RESET_ALL}')
+  # 判定
+  if uInt - cpInt == 0:
+    print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
+    print(f'{Fore.CYAN}{result[2]}{Fore.RESET}')
+    print(f'{Fore.CYAN} {trainer[trInt]}『{afterSerif[2]}』{Fore.RESET}')  
+
+  elif uInt - cpInt == 1 or uInt - cpInt == 2:
+    print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
+    print(f'{Fore.GREEN}{result[0]}')
+    print(f'{trainer[trInt]}『{afterSerif[0]}』{Fore.RESET}')
+    break
+
+  else:
+    print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
+    print(f'{Style.DIM} {Fore.RED}{result[1]}')
+    print(f'『{afterSerif[1]}』{Style.RESET_ALL}')
+    time.sleep(1)
+    subprocess.call(['clear'])
+    break
