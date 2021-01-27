@@ -9,21 +9,27 @@ from colorama import Fore, Back, Style
 # 変数セット
 hand = ('グー','チョキ','パー')
 result = ('> 勝ち！','> 負け...',"> あいこ")
-trainer = ('エリートトレーナー','ドクター','たんパンこぞう')
+trainer = ('エリートトレーナー','ドクター','たんパンこぞう','おまわりさん')
 
 beforeSerif = (
   'おおぜいの 中から ぼくに 話しかけた きみ！ みる 目 あるじゃないか！',
   'ドクター！ おきゃくさま 中に ドクターは いませんか？ \n はい わたしが ドクターです さっそく 勝負と まいりましょう',
   'オレが はいているのは たんぱん じゃない！ ハーフパンツ なんだよ！',
+  'おまえが　犯人かーっ！',
 )
 afterSerif = (
-  '負けた　勝負も　ホロ苦い　思い出だ……',
   'めのまえが まっくらに なった!',
   'まだまだ しょうぶは これからだ！'
   )
+afterWin = (
+  'すごい 手応えだ！ いい　勝負が　できたよ',
+  'あれれれ…… ひさしぶりすぎて カンが にぶったかな？',
+  'オマエ 強すぎるから たんぱん ずりおちそうに なっただろ！ おまえ すげーなー！',
+  '犯人じゃ なかったね…… ごめん！ ソーリー！',
+  )
 
 
-trInt = random.randint(0,2)
+trInt = random.randint(0,3)
 print(f'{trainer[trInt]}が しょうぶを しかけてきた！')
 print(f'{Fore.CYAN} {trainer[trInt]}『{beforeSerif[trInt]}』{Fore.RESET}')
 
@@ -49,18 +55,18 @@ while True:
   if uInt - cpInt == 0:
     print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
     print(f'{Fore.CYAN}{result[2]}{Fore.RESET}')
-    print(f'{Fore.CYAN} {trainer[trInt]}『{afterSerif[2]}』{Fore.RESET}')  
+    print(f'{Fore.CYAN} {trainer[trInt]}『{afterSerif[1]}』{Fore.RESET}')  
 
   elif uInt - cpInt == 1 or uInt - cpInt == 2:
     print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
     print(f'{Fore.GREEN}{result[0]}')
-    print(f'{trainer[trInt]}『{afterSerif[0]}』{Fore.RESET}')
+    print(f'{trainer[trInt]}『{afterWin[trInt]}』{Fore.RESET}')
     break
 
   else:
     print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
     print(f'{Style.DIM} {Fore.RED}{result[1]}')
-    print(f'『{afterSerif[1]}』{Style.RESET_ALL}')
-    time.sleep(1)
+    print(f'『{afterSerif[0]}』{Style.RESET_ALL}')
+    time.sleep(0.5)
     subprocess.call(['clear'])
     break
