@@ -5,7 +5,7 @@ import random
 from colorama import Fore, Back, Style
 
 hand = ('グー','チョキ','パー')
-result = ('> 勝ち！','> 負け！',"> あいこ！")
+result = ('> 勝ち！','> 負け...',"> あいこ")
 trainer = ('エリートトレーナー','ドクター','たんパンこぞう')
 
 beforeSerif = (
@@ -36,23 +36,23 @@ print('じゃんけん　ポンッ！')
 
 
 if uInt < 3:
-  print(f'あなた：{Fore.CYAN} {hand[uInt]} {Fore.RESET}を 出した')
+  print(f'あなたは {Fore.CYAN}{hand[uInt]}{Fore.RESET}を 出した')
 else:
   print(f'{Fore.RED} > 1 から 3 の 数字を 入力して じゃんけん しよう！{Fore.RESET}')
   exit()
 
 
 if uInt - cpInt == 0:
-  print(f'{trainer[trInt]}は {Fore.CYAN} {hand[cpInt]} {Fore.RESET}を 出した')
+  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
   print(f'{Fore.CYAN}{result[2]}{Fore.RESET}')
   print(f'{Fore.CYAN} {trainer[trInt]}『{afterSerif[2]}』{Fore.RESET}')
   
 elif uInt - cpInt == 1 or uInt - cpInt == 2:
-  print(f'{trainer[trInt]}は {Fore.CYAN} {hand[cpInt]} {Fore.RESET}を 出した')
+  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
   print(f'{Fore.GREEN}{result[0]}')
   print(f'{trainer[trInt]}『{afterSerif[0]}』{Fore.RESET}')
   
 else:
-  print(f'{trainer[trInt]}は {Fore.CYAN} {hand[cpInt]} {Fore.RESET}を 出した')
+  print(f'{trainer[trInt]}は {Fore.CYAN}{hand[cpInt]}{Fore.RESET}を 出した')
   print(f'{Style.DIM} {Fore.RED}{result[1]}')
   print(f'『{afterSerif[1]}』{Style.RESET_ALL}')

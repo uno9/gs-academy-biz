@@ -17,10 +17,12 @@ $pip3 freeze --all > Requirements.txt
 ```
 
 ## 🚀 Usage
+
+POKEMON janken
 ```bash
 $ git clone https://github.com/uno9/gs-academy-biz.git
 $ cd gs-academy-biz
-$ python3 studyGame.py
+$ python3 pokemon.py
 ```
 
 ## 🤝 Contributing
